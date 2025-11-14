@@ -147,8 +147,8 @@ function getAverage(arr) {
 function isSameLength(arr) {
   if (arr.length === 0) return true;
 
-  const length = arr[0].length;
-  return arr.every(str => str.length === length);
+  const { length } = arr[0];
+  return arr.every((str) => str.length === length);
 }
 
 /**
@@ -162,8 +162,8 @@ function isSameLength(arr) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((value, index) => value === index);
 }
 
 /**
