@@ -20,8 +20,9 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const length = end - start + 1;
+  return Array.from({ length }, (_, i) => start + i);
 }
 
 /**
@@ -587,21 +588,20 @@ function shiftArray(arr, n) {
  */
 function sortDigitNamesByNumericOrder(arr) {
   const digitMap = {
-    'zero': 0,
-    'one': 1,
-    'two': 2,
-    'three': 3,
-    'four': 4,
-    'five': 5,
-    'six': 6,
-    'seven': 7,
-    'eight': 8,
-    'nine': 9,
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
   };
 
   return arr.slice().sort((a, b) => digitMap[a] - digitMap[b]);
 }
-
 
 /**
  * Swaps the head and tail of the specified array:
@@ -622,8 +622,17 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const len = arr.length;
+  if (len <= 1) return arr.slice();
+
+  const mid = Math.floor(len / 2);
+  const isOdd = len % 2 !== 0;
+
+  const head = arr.slice(0, mid);
+  const tail = arr.slice(isOdd ? mid + 1 : mid);
+
+  return isOdd ? [...tail, arr[mid], ...head] : [...tail, ...head];
 }
 
 module.exports = {
