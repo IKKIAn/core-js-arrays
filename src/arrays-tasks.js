@@ -428,7 +428,7 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  return Array.from({ length: n }, (_, i) =>
+  return Array.from({ length: n }, (__, i) =>
     Array.from({ length: n }, (_, j) => (i === j ? 1 : 0))
   );
 }
@@ -446,8 +446,8 @@ function getIdentityMatrix(n) {
  */
 function getIndicesOfOddNumbers(numbers) {
   return numbers
-    .map((num, index) => (num % 2 !== 0 ? index : -1)) // заменяем чётные на -1
-    .filter(index => index !== -1); // оставляем только индексы нечётных
+    .map((num, index) => (num % 2 !== 0 ? index : -1))
+    .filter((index) => index !== -1);
 }
 
 /**
@@ -460,8 +460,8 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map(num => `#${num.toString(16).padStart(6, '0').toUpperCase()}`);
 }
 
 /**
